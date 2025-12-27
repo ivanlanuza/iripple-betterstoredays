@@ -133,7 +133,7 @@ export default function Layout({ children }) {
             <div>
               <div className="text-sm font-semibold">{SITE.name}</div>
               <div className="mt-2 text-sm text-slate-600">
-                Have Better Store Days.
+                Better Store Days.
               </div>
             </div>
 
@@ -165,10 +165,15 @@ export default function Layout({ children }) {
 
             <div>
               <div className="text-sm font-semibold">Contact</div>
-              <div className="mt-3 text-sm text-slate-700">
+              <div className="mt-2 text-sm text-slate-700">
                 <div>sales@iripple.com</div>
-                <div className="mt-2">2305 East Tektite Towers, Exchange Road, Ortigas CBD, Pasig City, Philippines</div>
+                <div className="mt-1">2305 East Tektite Towers, Exchange Road, Ortigas CBD, Pasig City, Philippines</div>
               </div>
+              <div className="mt-8 text-sm font-semibold">Tech Support</div>
+                  <div className="mt-2 text-sm text-slate-700">
+                <div>https://support.iripple.com</div>
+              </div>
+                
             </div>
           </div>
 

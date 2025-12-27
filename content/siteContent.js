@@ -114,7 +114,7 @@ export const PAGES = {
         heading: "Built for every retail employee — from cashier to CEO",
         subheading: "",
         text: "Cashiers & Frontliners\nFaster lines. Fewer errors. Smoother shifts.\n\nInventory & Stockroom\nCleaner counts, faster movement, fewer stockouts.\n\nIT Managers\nDeploy upgrades with a single-click. Simplify data management.\n\nOperations & Executives\nBranch-by-branch clarity to drive action.",
-        cta: "",
+        cta: "Discover Better Days",
         media: "",
         notes: "Panels (photo left, text right; alternating):\n",
       },
