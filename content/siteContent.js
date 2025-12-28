@@ -644,7 +644,7 @@ export const PAGES = {
         media: "",
         notes: "3 cards",
       },
-      {
+      /*      {
         order: 3.0,
         section: "Life at iRipple",
         heading: "What Our Employees Say",
@@ -654,6 +654,7 @@ export const PAGES = {
         media: "",
         notes: "Quotes / culture cards",
       },
+*/
       {
         order: 4.0,
         section: "Open roles",
