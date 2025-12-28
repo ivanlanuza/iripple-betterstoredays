@@ -9,11 +9,12 @@ function guessLink(title = "") {
   const t = raw.toLowerCase();
 
   // Explicit disambiguation for similarly-named products
-  if (t.includes("barter pos")) return "/products/barter-pos";
-  if (t.includes("barter retail management system")) return "/products/barter-rms";
-  if (t.includes("retina business intelligence")) return "/products/retina-bi";
-  if (t.includes("myrewards customer loyalty")) return "/products/myrewards-loyalty";
-  if (t.includes("atlas concessionaire app")) return "/products/atlas-inventory-app";
+  if (t.includes("cashiers")) return "/retailroles/cashiers";
+  if (t.includes("merchandisers")) return "/retailroles/merchandisers";
+  if (t.includes("it managers")) return "/retailroles/itmanagers";
+  if (t.includes("executives")) return "/retailroles/executives";
+  if (t.includes("store operations")) return "/retailroles/storeoperations";
+  if (t.includes("marketing")) return "/retailroles/marketingcreatives";
 
   // Normalize to improve matching (handles punctuation / extra spaces)
   const norm = (s) => String(s ?? "")
@@ -35,7 +36,7 @@ function guessLink(title = "") {
   return hit?.path || "/products";
 }
 
-export default function ProductGridSection({ sec }) {
+export default function RetailRolesSection({ sec }) {
   const heading = sec.heading || "";
   const sub = sec.subheading || "";
   const text = sec.text || "";
@@ -46,7 +47,7 @@ export default function ProductGridSection({ sec }) {
   const hasCards = blocks.length >= 2;
 
   return (
-    <SectionShell className="bg-slate-100 border-t border-slate-200">
+    <SectionShell className="bg-white border-t border-slate-200">
       {(heading || sub) ? (
         <div className="max-w-2xl">
           {heading ? (
@@ -59,7 +60,7 @@ export default function ProductGridSection({ sec }) {
       ) : null}
 
       {hasCards ? (
-        <div className="mt-10 grid gap-6 lg:grid-cols-2">
+        <div className="mt-10 grid gap-6 lg:grid-cols-3">
           {blocks.map((b, idx) => {
             const { title, body } = splitTitleBody(b);
             return (
@@ -68,7 +69,7 @@ export default function ProductGridSection({ sec }) {
                 className="group rounded-lg bg-white p-6 shadow-soft ring-1 ring-slate-200"
               >
                 <div className="grid gap-6 sm:grid-cols-12 sm:items-center">
-                  <div className="sm:col-span-7">
+                  <div className="sm:col-span-12">
                     {title ? (
                       <div className="text-base font-semibold text-slate-900 whitespace-pre-line">
                         {title}
@@ -84,12 +85,6 @@ export default function ProductGridSection({ sec }) {
                         {cta || "Learn more"}
                       </Button>
                     </div>
-                  </div>
-                  <div className="sm:col-span-5">
-                    <PlaceholderMedia
-                      src={`/images/products/${(idx) + 1}.png`}
-                      className="aspect-[4/3]"
-                    />
                   </div>
                 </div>
               </div>

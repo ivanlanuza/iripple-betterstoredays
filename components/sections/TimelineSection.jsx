@@ -43,7 +43,7 @@ export default function TimelineSection({ sec }) {
 
                 {/* Body card */}
                 {body ? (
-                  <div className="relative mt-0 rounded-lg bg-white p-6 shadow-soft ring-1 ring-slate-200">
+                  <div className="relative mt-0 rounded-lg bg-white p-6 shadow-soft ring-1 ring-slate-200 w-2/3">
                     <div className="text-sm text-slate-600 whitespace-pre-line">{body}</div>
                   </div>
                 ) : null}

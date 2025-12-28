@@ -13,6 +13,7 @@ import QuoteSection from "@/components/sections/QuoteSection";
 import CtaBandSection from "@/components/sections/CtaBandSection";
 import OpenRolesSection from "@/components/sections/OpenRolesSection";
 import CredibilitySection from "@/components/sections/CredibilitySection";
+import RetailRolesSection from "./sections/RetailRolesSection";
 
 function kindOf(sec) {
   const name = (sec.section || "").toLowerCase();
@@ -21,6 +22,7 @@ function kindOf(sec) {
   if (name.includes("proof")) return "stats";
   if (name.includes("timeline")) return "timeline";
   if (name.includes("values grid")) return "valuesGrid";
+  if (name.includes("built for the people")) return "rolesGrid";
   if (name.includes("product cards") || name.includes("product highlights")) return "productGrid";
   if (name.includes("navigation cards")) return "navCards";
   if (name.includes("clients") || (sec.notes || "").toLowerCase().includes("logo strip")) return "logos";
@@ -47,6 +49,7 @@ export default function PageRenderer({ page }) {
         const key = `${page.id}-${idx}`;
 
         if (kind === "hero") return <HeroSection key={key} sec={sec} idx={idx} />;
+        if (kind === "rolesGrid") return <RetailRolesSection key={key} sec={sec} />;
         if (kind === "stats") return <StatsBarSection key={key} sec={sec} />;
         if (kind === "timeline") return <TimelineSection key={key} sec={sec} />;
         if (kind === "valuesGrid") return <ValuesGridSection key={key} sec={sec} />;
