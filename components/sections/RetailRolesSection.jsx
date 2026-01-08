@@ -3,6 +3,14 @@ import Button from "@/components/Button";
 import { splitBlocks, splitTitleBody } from "@/lib/text";
 import PlaceholderMedia from "@/components/PlaceholderMedia";
 import { NAV } from "@/content/siteContent";
+import {
+  UserCircle,
+  Megaphone,
+  Boxes,
+  BarChart3,
+  Monitor,
+  Store
+} from "lucide-react";
 
 function guessLink(title = "") {
   const raw = String(title ?? "");
@@ -36,6 +44,19 @@ function guessLink(title = "") {
   return hit?.path || "/products";
 }
 
+function guessIcon(title = "") {
+  const t = String(title ?? "").toLowerCase();
+
+  if (t.includes("cashier") || t.includes("frontliner")) return UserCircle;
+  if (t.includes("marketing")) return Megaphone;
+  if (t.includes("inventory") || t.includes("merchandiser") || t.includes("warehouse")) return Boxes;
+  if (t.includes("executive") || t.includes("manager")) return BarChart3;
+  if (t.includes("it")) return Monitor;
+  if (t.includes("store")) return Store;
+
+  return UserCircle;
+}
+
 export default function RetailRolesSection({ sec }) {
   const heading = sec.heading || "";
   const sub = sec.subheading || "";
@@ -47,7 +68,15 @@ export default function RetailRolesSection({ sec }) {
   const hasCards = blocks.length >= 2;
 
   return (
-    <SectionShell className="bg-white border-t border-slate-200">
+    <SectionShell className="relative overflow-hidden bg-white border-t border-slate-200">
+    
+    {/* Decorative blue splashes */}
+    <div className="pointer-events-none absolute -top-32 -left-40 h-[28rem] w-[28rem] rounded-full bg-blue-300/30 blur-[120px]" />
+    <div className="pointer-events-none absolute top-1/3 -right-40 h-[32rem] w-[32rem] rounded-full bg-blue-400/25 blur-[140px]" />
+    <div className="pointer-events-none absolute bottom-[-8rem] left-1/3 h-[24rem] w-[24rem] rounded-full bg-sky-300/30 blur-[120px]" />
+
+    {/* Section content */}
+    <div className="relative z-10">
       {(heading || sub) ? (
         <div className="max-w-2xl">
           {heading ? (
@@ -70,11 +99,19 @@ export default function RetailRolesSection({ sec }) {
               >
                 <div className="grid gap-6 sm:grid-cols-12 sm:items-center">
                   <div className="sm:col-span-12">
-                    {title ? (
-                      <div className="text-base font-semibold text-slate-900 whitespace-pre-line">
-                        {title}
-                      </div>
-                    ) : null}
+                    {title ? (() => {
+                      const Icon = guessIcon(title);
+                      return (
+                        <div className="flex items-start gap-3">
+                          <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-md bg-blue-50 ring-1 ring-blue-200">
+                            <Icon className="h-5 w-5 text-blue-600" />
+                          </div>
+                          <div className="text-base mt-2 font-semibold text-slate-900 whitespace-pre-line">
+                            {title}
+                          </div>
+                        </div>
+                      );
+                    })() : null}
                     {body ? (
                       <div className="mt-3 text-sm text-slate-600 whitespace-pre-line">
                         {body}
@@ -102,6 +139,7 @@ export default function RetailRolesSection({ sec }) {
           ) : null}
         </div>
       )}
+    </div>
     </SectionShell>
   );
 }

@@ -117,7 +117,15 @@ export default function ContactSection({ sec }) {
   }
 
   return (
-    <SectionShell className="bg-slate-50">
+    <SectionShell className="relative overflow-hidden bg-slate-50">
+    
+    {/* Decorative blue splashes */}
+    <div className="pointer-events-none absolute -top-32 -left-40 h-[28rem] w-[28rem] rounded-full bg-blue-300/30 blur-[120px]" />
+    <div className="pointer-events-none absolute top-1/4 -right-40 h-[32rem] w-[32rem] rounded-full bg-blue-400/25 blur-[140px]" />
+    <div className="pointer-events-none absolute bottom-[-10rem] left-1/3 h-[24rem] w-[24rem] rounded-full bg-sky-300/30 blur-[120px]" />
+
+    {/* Section content */}
+    <div className="relative z-10">
       <div id="contact" className="scroll-mt-24 lg:scroll-mt-28 grid gap-10 lg:grid-cols-12 lg:items-start ">
         <div className="lg:col-span-5">
           {heading ? (
@@ -215,6 +223,7 @@ export default function ContactSection({ sec }) {
           </form>
         </div>
       </div>
+    </div>
     </SectionShell>
   );
 }
