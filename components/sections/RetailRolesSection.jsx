@@ -71,9 +71,9 @@ export default function RetailRolesSection({ sec }) {
     <SectionShell className="relative overflow-hidden bg-white border-t border-slate-200">
     
     {/* Decorative blue splashes */}
-    <div className="pointer-events-none absolute -top-32 -left-40 h-[28rem] w-[28rem] rounded-full bg-blue-300/30 blur-[120px]" />
-    <div className="pointer-events-none absolute top-1/3 -right-40 h-[32rem] w-[32rem] rounded-full bg-blue-400/25 blur-[140px]" />
-    <div className="pointer-events-none absolute bottom-[-8rem] left-1/3 h-[24rem] w-[24rem] rounded-full bg-sky-300/30 blur-[120px]" />
+    <div className="pointer-events-none absolute -top-32 -left-40 h-[28rem] w-[28rem] rounded-full bg-blue-200/30 blur-[120px]" />
+    <div className="pointer-events-none absolute top-1/3 -right-40 h-[32rem] w-[32rem] rounded-full bg-blue-300/25 blur-[140px]" />
+    <div className="pointer-events-none absolute bottom-[-8rem] left-1/3 h-[24rem] w-[24rem] rounded-full bg-sky-200/30 blur-[120px]" />
 
     {/* Section content */}
     <div className="relative z-10">

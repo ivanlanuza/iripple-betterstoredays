@@ -169,7 +169,7 @@ export default function Layout({ children }) {
                 <div>sales@iripple.com</div>
                 <div className="mt-1">2305 East Tektite Towers, Exchange Road, Ortigas CBD, Pasig City, Philippines</div>
               </div>
-              <div className="mt-8 text-sm font-semibold">Tech Support</div>
+              <div className="mt-8 text-sm font-semibold">After-sales Service</div>
                   <div className="mt-2 text-sm text-slate-700">
                 <div>https://support.iripple.com</div>
               </div>

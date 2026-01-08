@@ -32,7 +32,7 @@ export default function LogoStripSection({ sec }) {
               alt={l.alt}
               width={160}
               height={160}
-              className="h-16 w-auto object-contain"
+              className="h-11 md:h-16 w-auto object-contain"
               priority={false}
             />
           </div>
