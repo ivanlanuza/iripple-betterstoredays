@@ -12,11 +12,11 @@ export default function HeroSection({ sec, idx = 0 }) {
 
   return (
     <section className="relative overflow-hidden bg-white">
-      <div className="absolute inset-0 z-2">
+      <div className="absolute inset-0 z-10">
         {/* Decorative blue splashes */}
-        <div className="absolute -top-32 left-1/2 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-blue-200/30 blur-[140px]" />
-        <div className="absolute top-24 -left-32 h-[28rem] w-[28rem] rounded-full bg-sky-300/30 blur-[120px]" />
-        <div className="absolute -bottom-40 right-0 h-[32rem] w-[32rem] rounded-full bg-blue-400/25 blur-[140px]" />
+        <div className="absolute -top-32 left-1/2 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-zinc-200/30 blur-[140px]" />
+        <div className="absolute top-24 -left-32 h-[28rem] w-[28rem] rounded-full bg-slate-600/30 blur-[120px]" />
+        <div className="absolute -bottom-40 right-0 h-[32rem] w-[32rem] rounded-full bg-zinc-200/25 blur-[140px]" />
       </div>
 
       <SectionShell className="relative bg-transparent py-16 sm:py-20">
