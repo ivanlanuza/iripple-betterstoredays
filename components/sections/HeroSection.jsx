@@ -2,13 +2,20 @@ import SectionShell from "./SectionShell";
 import Button from "@/components/Button";
 import PlaceholderMedia from "@/components/PlaceholderMedia";
 import RichText from "@/components/RichText";
+import { useRouter } from "next/router";
 
 export default function HeroSection({ sec, idx = 0 }) {
+  const router = useRouter();
   const heading = sec.heading || "";
   const sub = sec.subheading || "";
   const text = sec.text || "";
   const cta = sec.cta || "";
   var mediaSrc = sec.media || `/images/placeholder-${(idx % 6) + 1}.svg`;
+  const isProductPage = router.pathname.startsWith("/products");
+  const productName = heading || sub || "";
+  const demoHref = isProductPage
+    ? `/request-demo?product=${encodeURIComponent(productName)}`
+    : `/request-demo?cta=${encodeURIComponent(cta || "Request for Demo")}`;
 
   return (
     <section className="relative overflow-hidden bg-white">
@@ -38,8 +45,12 @@ export default function HeroSection({ sec, idx = 0 }) {
 
             {cta ? (
               <div className="mt-8 flex flex-wrap items-center gap-3">
-                <Button href="/#contact">{cta}</Button>
-                <Button href="/products" variant="secondary">See Products</Button>
+                <Button href={demoHref}>
+                  {isProductPage ? "Request for Demo" : cta}
+                </Button>
+                <Button href="/products" variant="secondary">
+                  See Products
+                </Button>
               </div>
             ) : null}
           </div>

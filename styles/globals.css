@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap");
 
 :root {
   color-scheme: light;
@@ -12,6 +13,7 @@ html, body {
 
 body {
   @apply bg-white text-slate-900 antialiased;
+  font-family: "Manrope", "Segoe UI", sans-serif;
 }
 
 a { @apply text-slate-900; }

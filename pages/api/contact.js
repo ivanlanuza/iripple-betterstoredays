@@ -20,19 +20,35 @@ export default async function handler(req, res) {
       });
     }
 
-    const { fields = {}, page = "" } = req.body || {};
+    const { fields = {}, page = "", source = "website-contact" } = req.body || {};
 
     // Labels must match your form labels from the sheet
     const name = String(fields["Name"] ?? "").trim();
-    const company = String(fields["Company"] ?? "").trim();
     const email = String(fields["Email"] ?? "").trim();
-    const branches = String(fields["# of branches"] ?? "").trim();
+    const legacyCompany = String(fields["Company"] ?? "").trim();
+    const legacyBranches = String(fields["# of branches"] ?? "").trim();
+    const industryType = String(fields["Industry Type"] ?? "").trim();
+    const numberOfBranches = String(fields["Number of branches"] ?? "").trim();
 
-    // Required fields
-    if (!name || !company || !email || !branches) {
-      return res.status(400).json({
-        error: "Missing required fields: Name, Company, Email, # of branches.",
-      });
+    const isRequestDemo = source === "request-demo";
+
+    if (isRequestDemo) {
+      const interest = String(fields["Interest"] ?? "").trim();
+      if (!name || !email || !industryType || !numberOfBranches || !interest) {
+        return res.status(400).json({
+          error:
+            "Missing required fields: Name, Email, Industry Type, Number of branches, Interest.",
+        });
+      }
+      if (name.length > 25) {
+        return res.status(400).json({ error: "Name cannot exceed 25 characters." });
+      }
+    } else {
+      if (!name || !legacyCompany || !email || !legacyBranches) {
+        return res.status(400).json({
+          error: "Missing required fields: Name, Company, Email, # of branches.",
+        });
+      }
     }
 
     if (!isEmail(email)) {
@@ -44,8 +60,9 @@ export default async function handler(req, res) {
     );
 
     const text = [
-      "New Schedule a Demo request",
+      isRequestDemo ? "New Request for Demo submission" : "New Schedule a Demo request",
       "",
+      `Source: ${source}`,
       `Page: ${page}`,
       "",
       ...lines,
@@ -62,7 +79,9 @@ export default async function handler(req, res) {
       from: gmailAddress,
       to: "sales@iripple.com",
       replyTo: email,
-      subject: `Demo request: ${company} (${name})`,
+      subject: isRequestDemo
+        ? `Request for Demo: ${name}${industryType ? ` (${industryType})` : ""}`
+        : `Demo request: ${legacyCompany} (${name})`,
       text,
     });
 

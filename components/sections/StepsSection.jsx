@@ -36,7 +36,9 @@ export default function StepsSection({ sec }) {
 
       {cta ? (
         <div className="mt-8">
-          <Button href="/#contact">{cta}</Button>
+          <Button href={`/request-demo?cta=${encodeURIComponent(cta || "Request for Demo")}`}>
+            {cta}
+          </Button>
         </div>
       ) : null}
     </SectionShell>
