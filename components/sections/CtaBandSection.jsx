@@ -1,14 +1,20 @@
 import SectionShell from "./SectionShell";
 import Button from "@/components/Button";
+import { useRouter } from "next/router";
 
 export default function CtaBandSection({ sec }) {
+  const router = useRouter();
   const heading = sec.heading || "";
   const sub = sec.subheading || "";
   const text = sec.text || "";
   const cta = sec.cta || "";
+  const isProductPage = router.pathname.startsWith("/products");
 
   // Some sheets put CTA label in Text column.
-  const buttonLabel = cta || text || "";
+  const buttonLabel = isProductPage ? "Request for Demo" : cta || text || "";
+  const href = isProductPage
+    ? `/request-demo?product=${encodeURIComponent(heading || "Product Demo")}`
+    : `/request-demo?cta=${encodeURIComponent(buttonLabel || "Request for Demo")}`;
 
   return (
     <SectionShell>
@@ -24,7 +30,7 @@ export default function CtaBandSection({ sec }) {
           </div>
           <div className="lg:col-span-4 lg:flex lg:justify-end">
             {buttonLabel ? (
-              <Button href="/#contact" variant="secondary">
+              <Button href={href} variant="secondary">
                 {buttonLabel}
               </Button>
             ) : null}

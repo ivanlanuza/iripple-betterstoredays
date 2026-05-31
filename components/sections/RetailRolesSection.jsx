@@ -134,7 +134,9 @@ export default function RetailRolesSection({ sec }) {
           <div className="mt-3 text-slate-600 whitespace-pre-line">{text}</div>
           {cta ? (
             <div className="mt-6">
-              <Button href="/#contact">{cta}</Button>
+              <Button href={`/request-demo?cta=${encodeURIComponent(cta || "Request for Demo")}`}>
+                {cta}
+              </Button>
             </div>
           ) : null}
         </div>

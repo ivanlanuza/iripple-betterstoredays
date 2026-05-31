@@ -1,7 +1,7 @@
 export const SITE = {
   name: "iRipple",
-  primaryCta: "Schedule a Demo",
-  salesCta: "Talk to Sales",
+  primaryCta: "Book a Retail Operations Review",
+  salesCta: "Talk to a Retail Technology Specialist",
 };
 
 export const NAV = {
@@ -13,6 +13,10 @@ export const NAV = {
     {
       label: "Products",
       path: "/products",
+    },
+    {
+      label: "Industries",
+      path: "/industries",
     },
     {
       label: "About",
@@ -35,19 +39,29 @@ export const NAV = {
       id: "barter-rms",
     },
     {
+      label: "Barter Loyalty",
+      path: "/products/myrewards-loyalty",
+      id: "barter-loyalty",
+    },
+    {
+      label: "Barter Atlas",
+      path: "/products/atlas-inventory-app",
+      id: "barter-atlas",
+    },
+    {
       label: "Retina Business Intelligence",
       path: "/products/retina-bi",
       id: "retina-bi",
     },
     {
-      label: "MyRewards Loyalty",
-      path: "/products/myrewards-loyalty",
-      id: "myrewards-loyalty",
+      label: "Retina POS Fraud Console",
+      path: "/products/retina-pos-fraud-console",
+      id: "retina-pos-fraud-console",
     },
     {
-      label: "Atlas Inventory App",
-      path: "/products/atlas-inventory-app",
-      id: "atlas-inventory-app",
+      label: "Retina AI Analyst",
+      path: "/products/retina-ai-analyst",
+      id: "retina-ai-analyst",
     },
   ],
   about: [
