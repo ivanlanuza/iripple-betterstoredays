@@ -57,18 +57,30 @@ export default function RetinaPosFraudConsolePage() {
               and clearer accountability. Watch the explainer video above to see
               how Retina AI POS Fraud Console works.
             </p>
-            <p className="mt-4 text-md leading-relaxed text-slate-700 sm:text-md"></p>
           </div>
         </Container>
 
-        <Container className="mt-8">
-          <div className="flex justify-center">
-            <Button
-              href="/request-demo?product=Retina POS Fraud Console"
-              className="px-7 py-3 text-base"
-            >
-              Request for Demo
-            </Button>
+        <Container className="mt-12">
+          <div className="rounded-2xl bg-slate-900 px-8 py-10 text-white shadow-soft">
+            <div className="grid gap-6 lg:grid-cols-12 lg:items-center">
+              <div className="lg:col-span-8">
+                <div className="text-2xl font-semibold tracking-tight">
+                  Ready to Reduce Hidden POS Leakage?
+                </div>
+                <div className="mt-2 text-slate-200">
+                  See how Retina AI POS Fraud Console can help your team spot
+                  risk earlier and investigate with more confidence.
+                </div>
+              </div>
+              <div className="lg:col-span-4 lg:flex lg:justify-end">
+                <Button
+                  href="/request-demo?product=Retina POS Fraud Console"
+                  variant="secondary"
+                >
+                  Request for Demo
+                </Button>
+              </div>
+            </div>
           </div>
         </Container>
       </section>

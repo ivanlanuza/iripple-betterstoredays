@@ -60,14 +60,27 @@ export default function RetinaAiAnalystPage() {
           </div>
         </Container>
 
-        <Container className="mt-8">
-          <div className="flex justify-center">
-            <Button
-              href="/request-demo?product=Retina AI Analyst"
-              className="px-7 py-3 text-base"
-            >
-              Request for Demo
-            </Button>
+        <Container className="mt-12">
+          <div className="rounded-2xl bg-slate-900 px-8 py-10 text-white shadow-soft">
+            <div className="grid gap-6 lg:grid-cols-12 lg:items-center">
+              <div className="lg:col-span-8">
+                <div className="text-2xl font-semibold tracking-tight">
+                  Ready to get your questions answered faster?
+                </div>
+                <div className="mt-2 text-slate-200">
+                  See how Retina AI Analyst can turn your retail data into
+                  faster answers and sharper decisions.
+                </div>
+              </div>
+              <div className="lg:col-span-4 lg:flex lg:justify-end">
+                <Button
+                  href="/request-demo?product=Retina AI Analyst"
+                  variant="secondary"
+                >
+                  Request for Demo
+                </Button>
+              </div>
+            </div>
           </div>
         </Container>
       </section>
