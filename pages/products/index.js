@@ -90,9 +90,15 @@ export default function ProductsPage() {
                 </div>
                 <h2 className="mt-2 text-xl font-semibold text-slate-900">{product.name}</h2>
                 <p className="mt-4 text-sm text-slate-700">{product.summary}</p>
-                <div className="mt-6">
-                  <Button href={`/request-demo?product=${encodeURIComponent(product.name)}`}>
-                    Request for Demo
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <Button href={product.href}>
+                    Read More
+                  </Button>
+                  <Button
+                    href={`/request-demo?product=${encodeURIComponent(product.name)}`}
+                    variant="secondary"
+                  >
+                    Book a Demo
                   </Button>
                 </div>
               </article>
