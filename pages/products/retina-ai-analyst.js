@@ -33,7 +33,7 @@ export default function RetinaAiAnalystPage() {
       </section>
 
       <section className="bg-white py-16 sm:py-20">
-        <div className="mx-auto mt-10 w-[70vw] max-w-[1600px]">
+        <div className="mx-auto mt-10 w-[90vw] md:w-[70vw] max-w-[1600px]">
           <div className="relative aspect-video overflow-hidden rounded-3xl bg-slate-950 shadow-soft ring-1 ring-slate-200">
             <iframe
               title="Retina_AI_Analyst"
