@@ -4,6 +4,19 @@ function isEmail(s = "") {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(s).trim());
 }
 
+function looksLikeGibberish(value = "") {
+  const text = String(value).trim();
+  const letters = text.replace(/[^a-z]/gi, "");
+  const vowels = (letters.match(/[aeiou]/gi) || []).length;
+
+  return (
+    text.length >= 18 &&
+    !/\s/.test(text) &&
+    /^[a-z]+$/i.test(text) &&
+    vowels / letters.length < 0.25
+  );
+}
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
@@ -42,6 +55,11 @@ export default async function handler(req, res) {
       }
       if (name.length > 25) {
         return res.status(400).json({ error: "Name cannot exceed 25 characters." });
+      }
+      if (looksLikeGibberish(interest)) {
+        return res.status(400).json({
+          error: "Please enter a valid description of your interest.",
+        });
       }
     } else {
       if (!name || !legacyCompany || !email || !legacyBranches) {
