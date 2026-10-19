@@ -17,6 +17,28 @@ function looksLikeGibberish(value = "") {
   );
 }
 
+function looksLikeRandomMixedCase(value = "") {
+  const text = String(value).trim();
+  const lowerToUpperTransitions = (text.match(/[a-z][A-Z]/g) || []).length;
+
+  return (
+    text.length >= 15 &&
+    /^[a-z]+$/i.test(text) &&
+    lowerToUpperTransitions >= 3
+  );
+}
+
+function isPhone(value = "") {
+  const text = String(value).trim();
+  const digitCount = (text.match(/\d/g) || []).length;
+
+  return (
+    /^[+\d(][\d\s().-]*$/.test(text) &&
+    digitCount >= 7 &&
+    digitCount <= 15
+  );
+}
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
@@ -46,6 +68,7 @@ export default async function handler(req, res) {
     const isRequestDemo = source === "request-demo";
 
     if (isRequestDemo) {
+      const mobile = String(fields["Mobile"] ?? "").trim();
       const interest = String(fields["Interest"] ?? "").trim();
       if (!name || !email || !industryType || !numberOfBranches || !interest) {
         return res.status(400).json({
@@ -56,7 +79,13 @@ export default async function handler(req, res) {
       if (name.length > 25) {
         return res.status(400).json({ error: "Name cannot exceed 25 characters." });
       }
-      if (looksLikeGibberish(interest)) {
+      if (looksLikeGibberish(name) || looksLikeRandomMixedCase(name)) {
+        return res.status(400).json({ error: "Please enter a valid name." });
+      }
+      if (mobile && !isPhone(mobile)) {
+        return res.status(400).json({ error: "Please enter a valid mobile number." });
+      }
+      if (looksLikeGibberish(interest) || looksLikeRandomMixedCase(interest)) {
         return res.status(400).json({
           error: "Please enter a valid description of your interest.",
         });
