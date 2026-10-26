@@ -12,15 +12,17 @@ export default function Button({
   ...props
 }) {
   const base =
-    "inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold transition shadow-sm";
+    "inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition shadow-sm";
 
   const styles = {
     primary:
-      "bg-slate-900 text-white hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-900 focus:ring-offset-2",
+      "bg-[#203888] text-white hover:bg-[#182e75] focus:outline-none focus:ring-2 focus:ring-[#203888] focus:ring-offset-2",
     secondary:
       "bg-white text-slate-900 ring-1 ring-slate-200 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-900 focus:ring-offset-2",
     ghost:
       "bg-transparent text-slate-900 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-900 focus:ring-offset-2",
+    warm:
+      "bg-white text-[#203888] hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#203888]",
   };
 
   const cls = clsx(
@@ -46,7 +48,7 @@ export default function Button({
     };
 
     // We render an <a> element for hash links and external links.
-    // For internal routes, we wrap <a> with <Link> to avoid passing random props to next/link.
+    // Internal routes use Next.js Link for client-side navigation.
     const anchorProps = {
       ...props,
       onClick: handleLinkClick,
@@ -68,10 +70,8 @@ export default function Button({
     }
 
     return (
-      <Link href={url} legacyBehavior>
-        <a href={url} {...anchorProps}>
-          {children}
-        </a>
+      <Link href={url} {...anchorProps}>
+        {children}
       </Link>
     );
   }

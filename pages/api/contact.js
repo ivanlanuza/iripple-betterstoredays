@@ -55,7 +55,21 @@ export default async function handler(req, res) {
       });
     }
 
-    const { fields = {}, page = "", source = "website-contact" } = req.body || {};
+    const { fields = {}, page = "", source = "website-contact", website = "", startedAt = 0 } = req.body || {};
+
+    // Honeypot and minimum-completion-time checks reduce automated form spam.
+    if (String(website).trim()) {
+      return res.status(200).json({ ok: true });
+    }
+    if (startedAt && Date.now() - Number(startedAt) < 1500) {
+      return res.status(400).json({ error: "Please wait a moment and try again." });
+    }
+    if (!fields || typeof fields !== "object" || Array.isArray(fields) || Object.keys(fields).length > 20) {
+      return res.status(400).json({ error: "Invalid form submission." });
+    }
+    if (Object.values(fields).some((value) => String(value ?? "").length > 2000)) {
+      return res.status(400).json({ error: "One or more fields are too long." });
+    }
 
     // Labels must match your form labels from the sheet
     const name = String(fields["Name"] ?? "").trim();
@@ -76,8 +90,8 @@ export default async function handler(req, res) {
             "Missing required fields: Name, Email, Industry Type, Number of branches, Interest.",
         });
       }
-      if (name.length > 25) {
-        return res.status(400).json({ error: "Name cannot exceed 25 characters." });
+      if (name.length > 80) {
+        return res.status(400).json({ error: "Name cannot exceed 80 characters." });
       }
       if (looksLikeGibberish(name) || looksLikeRandomMixedCase(name)) {
         return res.status(400).json({ error: "Please enter a valid name." });
@@ -134,6 +148,7 @@ export default async function handler(req, res) {
 
     return res.status(200).json({ ok: true });
   } catch (err) {
+    console.error("Contact form email failed", err);
     return res.status(500).json({ error: "Failed to send email." });
   }
 }
