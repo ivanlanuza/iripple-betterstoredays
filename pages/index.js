@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, BarChart3, CheckCircle2, Layers3 } from "lucide-react";
+import { ArrowDownRight, ArrowRight, CheckCircle2 } from "lucide-react";
 import Button from "@/components/Button";
 import Container from "@/components/Container";
 import Layout from "@/components/Layout";
@@ -14,39 +14,53 @@ export default function HomePage() {
   return (
     <Layout>
       <Seo description="iRipple is an enterprise retail technology partner helping retailers operate and understand their business through Barter and Retina." schema={schema} />
-      <section className="relative overflow-hidden bg-[#f8f6f1] py-16 sm:py-24 lg:py-28">
-        <div className="ripple-lines" aria-hidden="true" />
-        <Container className="relative grid items-center gap-12 lg:grid-cols-[1.05fr_.95fr]">
-          <div>
-            <Eyebrow>Enterprise retail needs more than software</Eyebrow>
-            <h1 className="mt-5 max-w-4xl text-5xl font-semibold tracking-[-0.055em] text-slate-950 sm:text-6xl lg:text-7xl">Your enterprise retail technology partner.</h1>
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-700 sm:text-xl">Run your business with Barter. Understand it with Retina. Grow with iRipple by your side.</p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <Button href="/contact">Talk to a retail technology specialist <ArrowRight className="ml-2 h-4 w-4" /></Button>
-              <Button href="#platforms" variant="secondary">Explore Barter and Retina</Button>
-            </div>
-            <p className="mt-7 flex items-center gap-2 text-sm font-medium text-slate-600"><CheckCircle2 className="h-4 w-4 text-[#882038]" /> Built for the Philippines. Ready for what comes next.</p>
+      <section className="home-hero">
+        <div className="home-hero__visual" aria-hidden="true">
+          <Image
+            src="/images/iripple-partnership-hero-v2.png"
+            alt=""
+            className="home-hero__image"
+            fill
+            priority
+            quality={75}
+            sizes="(min-width: 1024px) 58vw, 100vw"
+          />
+          <div className="home-hero__image-wash" />
+          <div className="home-hero__signal">
+            <span className="home-hero__signal-dot" />
+            <span className="home-hero__ring home-hero__ring--one" />
+            <span className="home-hero__ring home-hero__ring--two" />
+            <span className="home-hero__ring home-hero__ring--three" />
           </div>
-          <div className="relative mx-auto w-full max-w-xl">
-            <div className="absolute -inset-5 rounded-full bg-blue-200/30 blur-3xl" />
-            <div className="relative overflow-hidden rounded-[2rem] border border-white bg-white p-3 shadow-[0_30px_90px_rgba(32,56,136,.18)]">
-              <Image
-                src="/images/iripple-partnership-hero-v2.png"
-                alt="Retail and technology professionals reviewing operations together in a modern store"
-                className="aspect-[3/2] w-full rounded-[1.4rem] object-cover"
-                width={1536}
-                height={1024}
-                priority
-                quality={75}
-                sizes="(min-width: 1024px) 42vw, (min-width: 640px) 70vw, 100vw"
-              />
-              <div className="grid grid-cols-2 gap-3 p-3 pb-1 pt-4">
-                <div className="rounded-2xl bg-[#eaf0ff] p-4"><Layers3 className="h-5 w-5 text-[#203888]" /><div className="mt-3 text-sm font-semibold">Barter Platform</div><div className="mt-1 text-xs text-slate-600">Operate your business</div></div>
-                <div className="rounded-2xl bg-[#fff0f1] p-4"><BarChart3 className="h-5 w-5 text-[#882038]" /><div className="mt-3 text-sm font-semibold">Retina Platform</div><div className="mt-1 text-xs text-slate-600">Understand your business</div></div>
-              </div>
+          <div className="home-hero__product home-hero__product--barter">
+            <span>Barter</span>
+            <small>Operate</small>
+          </div>
+          <div className="home-hero__product home-hero__product--retina">
+            <span>Retina</span>
+            <small>Understand</small>
+          </div>
+        </div>
+
+        <Container className="home-hero__inner">
+          <div className="home-hero__copy">
+            <p className="home-hero__eyebrow"><span /> Enterprise retail, connected</p>
+            <h1 className="home-hero__title">
+              <span>Run retail.</span>
+              <span className="home-hero__title-accent">See further.</span>
+            </h1>
+            <p className="home-hero__lede">Barter runs the day. Retina reveals what’s next. iRipple makes them work as one.</p>
+            <div className="home-hero__actions">
+              <Button href="/contact" variant="warm" className="home-hero__cta">Start a conversation <ArrowRight className="ml-2 h-4 w-4" /></Button>
+              <a href="#platforms" className="home-hero__explore">See how it works <ArrowDownRight className="h-4 w-4" /></a>
             </div>
           </div>
         </Container>
+
+        <div className="home-hero__edge" aria-hidden="true">
+          <span>Built for Philippine retail</span>
+          <span className="home-hero__edge-line" />
+        </div>
       </section>
       <ProofStrip />
       <ClientLogoWall />
