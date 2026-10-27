@@ -28,6 +28,7 @@ export function ClientLogoWall({ compact = false }) {
             </div>
           ))}
         </div>
+        <Link href="/clients" className="mt-12 inline-flex items-center gap-2 rounded-sm text-sm font-semibold text-[#203888] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#203888]">Explore our client wall <ArrowRight className="h-4 w-4" /></Link>
       </Container>
     </section>
   );

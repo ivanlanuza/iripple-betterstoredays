@@ -1,5 +1,5 @@
 const routes = [
-  "", "/why-iripple", "/barter", "/barter/pos", "/barter/retail-management", "/barter/loyalty", "/barter/mobile-inventory",
+  "", "/why-iripple", "/clients", "/barter", "/barter/pos", "/barter/retail-management", "/barter/loyalty", "/barter/mobile-inventory",
   "/retina", "/retina/business-intelligence", "/retina/ai-analyst", "/retina/pos-ai-fraud-detection", "/retina/data-warehousing",
   "/company", "/company/careers", "/contact", "/privacy",
   "/products", "/products/barter-pos", "/products/barter-rms", "/products/myrewards-loyalty", "/products/atlas-inventory-app",

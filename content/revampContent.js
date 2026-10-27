@@ -2,6 +2,7 @@ export const SITE_URL = "https://www.iripple.com";
 
 export const NEW_NAV = [
   { label: "Why iRipple", path: "/why-iripple" },
+  { label: "Our clients", path: "/clients" },
   { label: "Barter", path: "/barter" },
   { label: "Retina", path: "/retina" },
   { label: "Company", path: "/company" },
