@@ -104,7 +104,7 @@ export const BARTER_PRODUCTS = [
     image: "/images/products/4.png",
     outcomes: ["Stronger customer loyalty", "More repeat purchases and higher spend", "More effective, insight-led promotions"],
     features: [
-      "Points and tier-based rewards",
+      "Points and flexible reward options",
       "Targeted promotions, discounts, and bonuses",
       "Customer behavior and preference insights",
       "Digital cards, balances, and transaction inquiry",
@@ -207,7 +207,7 @@ export const PRODUCT_FAMILIES = {
     name: "Barter",
     promise: "Operate your business",
     description:
-      "The connected retail operations platform for checkout, merchandise management, loyalty, and inventory work across stores and head office.",
+      "Keep checkout moving, manage stock and pricing across branches, reward returning customers, and put inventory tools in your store teams’ hands.",
     products: BARTER_PRODUCTS,
     accent: "barter",
   },
@@ -215,7 +215,7 @@ export const PRODUCT_FAMILIES = {
     name: "Retina",
     promise: "Understand your business",
     description:
-      "The intelligence platform that turns retail data into trusted visibility, accessible analysis, focused investigation, and a dependable data foundation.",
+      "See performance in dashboards, ask questions in plain language, investigate suspicious POS activity, and build a dependable data foundation.",
     products: RETINA_PRODUCTS,
     accent: "retina",
   },

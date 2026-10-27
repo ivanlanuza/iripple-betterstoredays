@@ -1,3 +1,5 @@
-import { CapabilityPage } from "@/components/marketing/Marketing";
-import { getProduct, PRODUCT_FAMILIES } from "@/content/revampContent";
-export default function Page() { return <CapabilityPage family={PRODUCT_FAMILIES.retina} product={getProduct("retina", "pos-ai-fraud-detection")} />; }
+import { RetinaModulePage } from "@/components/marketing/Retina";
+
+export default function Page() {
+  return <RetinaModulePage slug="pos-ai-fraud-detection" />;
+}
