@@ -20,7 +20,7 @@ export default function HomePage() {
           <div>
             <Eyebrow>Enterprise retail needs more than software</Eyebrow>
             <h1 className="mt-5 max-w-4xl text-5xl font-semibold tracking-[-0.055em] text-slate-950 sm:text-6xl lg:text-7xl">Your enterprise retail technology partner.</h1>
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-700 sm:text-xl">iRipple helps retailers operate and understand their business through two connected platforms—Barter and Retina—backed by people who stay engaged through growth, regulation, new technology, and disruption.</p>
+            <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-700 sm:text-xl">Run your business with Barter. Understand it with Retina. Grow with iRipple by your side.</p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Button href="/contact">Talk to a retail technology specialist <ArrowRight className="ml-2 h-4 w-4" /></Button>
               <Button href="#platforms" variant="secondary">Explore Barter and Retina</Button>
@@ -41,8 +41,8 @@ export default function HomePage() {
                 sizes="(min-width: 1024px) 42vw, (min-width: 640px) 70vw, 100vw"
               />
               <div className="grid grid-cols-2 gap-3 p-3 pb-1 pt-4">
-                <div className="rounded-2xl bg-[#eaf0ff] p-4"><Layers3 className="h-5 w-5 text-[#203888]" /><div className="mt-3 text-sm font-semibold">Barter</div><div className="mt-1 text-xs text-slate-600">Operate your business</div></div>
-                <div className="rounded-2xl bg-[#fff0f1] p-4"><BarChart3 className="h-5 w-5 text-[#882038]" /><div className="mt-3 text-sm font-semibold">Retina</div><div className="mt-1 text-xs text-slate-600">Understand your business</div></div>
+                <div className="rounded-2xl bg-[#eaf0ff] p-4"><Layers3 className="h-5 w-5 text-[#203888]" /><div className="mt-3 text-sm font-semibold">Barter Platform</div><div className="mt-1 text-xs text-slate-600">Operate your business</div></div>
+                <div className="rounded-2xl bg-[#fff0f1] p-4"><BarChart3 className="h-5 w-5 text-[#882038]" /><div className="mt-3 text-sm font-semibold">Retina Platform</div><div className="mt-1 text-xs text-slate-600">Understand your business</div></div>
               </div>
             </div>
           </div>
@@ -54,7 +54,7 @@ export default function HomePage() {
 
       <section id="platforms" className="bg-[#f3f6ff] py-20 sm:py-28">
         <Container>
-          <div className="mx-auto max-w-3xl text-center"><Eyebrow>Two platforms, one retail partner</Eyebrow><h2 className="mt-4 text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">Operate with Barter. Understand with Retina.</h2><p className="mt-5 text-lg leading-8 text-slate-600">A simpler product portfolio, connected around the work retailers do every day and the decisions that shape what comes next.</p></div>
+          <div className="mx-auto max-w-3xl text-center"><Eyebrow>Two platforms, one retail partner</Eyebrow><h2 className="mt-4 text-4xl font-semibold tracking-[-0.04em] sm:text-5xl"><span className="block">Operate with Barter.</span><span className="mt-2 block">Understand with Retina.</span></h2></div>
           <div className="mt-12 grid gap-6 lg:grid-cols-2">
             {[PRODUCT_FAMILIES.barter, PRODUCT_FAMILIES.retina].map((family) => <div key={family.name} className={`rounded-[2rem] p-7 sm:p-9 ${family.name === "Barter" ? "bg-[#203888] text-white" : "bg-white text-slate-950"}`}><Eyebrow light={family.name === "Barter"}>{family.name} platform</Eyebrow><h3 className="mt-4 text-3xl font-semibold tracking-tight">{family.promise}</h3><p className={`mt-4 leading-7 ${family.name === "Barter" ? "text-blue-100" : "text-slate-600"}`}>{family.description}</p><ul className="mt-7 space-y-3">{family.products.map((product) => <li key={product.name} className="flex items-center gap-3 text-sm"><CheckCircle2 className={`h-4 w-4 ${family.name === "Barter" ? "text-blue-200" : "text-[#882038]"}`} />{product.name}</li>)}</ul><Link href={`/${family.name.toLowerCase()}`} className={`mt-8 inline-flex items-center text-sm font-semibold ${family.name === "Barter" ? "text-white" : "text-[#203888]"}`}>Explore {family.name} <ArrowRight className="ml-2 h-4 w-4" /></Link></div>)}
           </div>

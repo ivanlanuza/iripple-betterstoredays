@@ -20,7 +20,7 @@ import { INDUSTRY_LIST } from "@/lib/industryContent";
 const trustStats = [
   { value: "25+", label: "Years Retail Experience" },
   { value: "400+", label: "Retail Brands" },
-  { value: "4,000+", label: "Stores" },
+  { value: "5,000+", label: "Stores" },
   { value: "1M+", label: "Daily Transactions" },
 ];
 

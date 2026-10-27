@@ -10,7 +10,7 @@ export const NEW_NAV = [
 export const PROOF_POINTS = [
   { value: "25+", label: "years in retail technology" },
   { value: "400+", label: "retail brands served" },
-  { value: "4,000+", label: "stores managed" },
+  { value: "5,000+", label: "stores managed" },
   { value: "1M+", label: "daily transactions supported" },
 ];
 

@@ -28,7 +28,7 @@ export default function WhyIRipplePage() {
           <div>
             <Eyebrow light>How we work</Eyebrow>
             <h2 className="mt-4 text-4xl font-semibold tracking-tight">Masipag. May malasakit. Tumatagal.</h2>
-            <p className="mt-5 text-lg leading-8 text-blue-100">We work hard, care about the outcome, and build relationships that last. It is a practical standard for how we show up through everyday operations, high-stakes migrations, regulation changes, and the moments that test a retail business.</p>
+            <p className="mt-5 text-lg leading-8 text-blue-100">We work hard, care about the outcome, and build relationships that last.</p>
           </div>
           <div className="grid gap-4">
             <div className="rounded-3xl border border-white/15 bg-white/[.07] p-6"><h3 className="font-semibold">Listen to the operation</h3><p className="mt-2 text-sm leading-6 text-blue-100">Start with how people actually work, where friction lives, and what the business must protect.</p></div>

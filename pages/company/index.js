@@ -29,8 +29,8 @@ const chapters = [
   {
     years: "2016–2020",
     title: "Broadening from systems to a retail technology ecosystem",
-    text: "iRipple incorporated Hanrio, a hardware distribution company, to support retailers that wanted one partner for both software and hardware needs. Fernan Lukban, now iRipple’s Chairman, joined in 2016, followed by CEO Ivan Lanuza in 2019. Retina Business Intelligence also joined the portfolio, expanding iRipple from running retail operations to helping leaders understand them. Loyalty, business intelligence, and mobile inventory capabilities followed, while clients such as Jetti and CW Home Depot brought the company into new retail formats. In 2019, Fernan, Victor, Ivan, and Hubert also founded MySuki, focused on digitizing the FMCG supply chain.",
-    highlights: ["Hanrio expands hardware capability", "Retina joins the portfolio", "New formats and adjacent ventures"],
+    text: "iRipple expanded into hardware, giving retailers one partner for their software and hardware needs. Fernan Lukban, now iRipple’s Chairman, joined in 2016, followed by CEO Ivan Lanuza in 2019. Retina Business Intelligence also joined the portfolio, expanding iRipple from running retail operations to helping leaders understand them. Loyalty, business intelligence, and mobile inventory capabilities followed, while clients such as Jetti and CW Home Depot brought the company into new retail formats. In 2019, Fernan, Victor, Ivan, and Hubert also founded MySuki, focused on digitizing the FMCG supply chain.",
+    highlights: ["Hardware joins the offering", "Retina joins the portfolio", "New formats and adjacent ventures"],
   },
   {
     years: "2021–2025",

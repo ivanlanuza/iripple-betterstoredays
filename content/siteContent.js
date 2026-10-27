@@ -107,7 +107,7 @@ export const PAGES = {
         section: "Proof Bar",
         heading: "Trusted at scale by leading Southeast Asian retailers",
         subheading: "",
-        text: "1,000,000+ receipts printed per day\n\n10,000+ POS deployed\n\n4,000+ stores managed\n\n400+ retail brands served\n\n25 years in retail tech",
+        text: "1,000,000+ receipts printed per day\n\n10,000+ POS deployed\n\n5,000+ stores managed\n\n400+ retail brands served\n\n25 years in retail tech",
         cta: "",
         media: "",
         notes: "Stat Blocks.\n\nDesign: big number + small label.",

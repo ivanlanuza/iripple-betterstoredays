@@ -34,28 +34,22 @@ export function ClientLogoWall({ compact = false }) {
 }
 
 export function PartnershipSummary() {
-  const points = [
-    "Growth",
-    "Enterprise transitions",
-    "New technology",
-    "Regulatory change",
-    "Connected ecosystems",
-    "Market disruption",
-  ];
-
   return (
-    <section className="bg-[#203888] py-16 text-white sm:py-20">
-      <Container className="grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
-        <div>
-          <Eyebrow light>A partner through change</Eyebrow>
-          <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">Retail never stands still. Neither do we.</h2>
-          <p className="mt-4 max-w-xl leading-7 text-blue-100">For more than 25 years, iRipple has helped retailers keep moving through the changes that matter most.</p>
-          <Link href="/why-iripple" className="mt-7 inline-flex items-center text-sm font-semibold text-white">
-            Why retailers choose iRipple <ArrowRight className="ml-2 h-4 w-4" />
-          </Link>
+    <section className="relative overflow-hidden bg-[#203888] py-16 text-white sm:py-20">
+      <div className="ripple-lines ripple-lines-light" aria-hidden="true" />
+      <Container className="relative grid gap-10 sm:grid-cols-[.6fr_1.4fr] sm:items-center lg:gap-20">
+        <div className="border-b border-white/20 pb-8 sm:border-b-0 sm:border-r sm:pb-0 sm:pr-10">
+          <p className="text-7xl font-semibold tracking-[-.06em] sm:text-8xl lg:text-9xl">25<span className="text-blue-200">+</span></p>
+          <p className="mt-3 max-w-44 text-sm leading-6 text-blue-100">years of growing alongside retailers</p>
         </div>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-          {points.map((point) => <div key={point} className="rounded-2xl border border-white/15 bg-white/[.07] px-4 py-5 text-sm font-semibold">Through {point.toLowerCase()}</div>)}
+        <div>
+          <Eyebrow light>Your next chapter, together</Eyebrow>
+          <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">Grow. Adapt. Keep moving.</h2>
+          <p className="mt-5 max-w-xl text-lg leading-8 text-blue-100">From your next store to your next system, we bring the people and technology to see it through.</p>
+          <p className="mt-5 text-sm font-medium text-blue-200">Expansion. Technology. Compliance. A partner for every step.</p>
+          <Link href="/why-iripple" className="group mt-8 inline-flex items-center gap-3 rounded-full bg-white px-6 py-3 text-sm font-semibold !text-[#203888] transition hover:bg-blue-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
+            See the partnership in action <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Link>
         </div>
       </Container>
     </section>
@@ -67,9 +61,9 @@ export function PartnershipProof() {
     <section className="bg-[#f8f6f1] py-20 sm:py-28">
       <Container>
         <div className="max-w-5xl">
-          <Eyebrow>Partnership under pressure</Eyebrow>
-          <h2 className="mt-4 text-4xl font-semibold tracking-[-0.045em] text-slate-950 sm:text-5xl">When retail changes, the question is who stays with you.</h2>
-          <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">A true partner helps you move forward without handing the consequences back to your team.</p>
+          <Eyebrow>A partner through change</Eyebrow>
+          <h2 className="mt-4 text-4xl font-semibold tracking-[-0.045em] text-slate-950 sm:text-5xl">With you as your business grows.</h2>
+          <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">We help retailers expand, modernize their systems, and stay compliant—with a team that knows their business.</p>
         </div>
 
         <article className="mt-12 overflow-hidden rounded-[2rem] bg-[#203888] text-white">
@@ -152,8 +146,24 @@ export function AdvantageMatrix() {
     <section className="py-20 sm:py-28">
       <Container>
         <div className="max-w-3xl"><Eyebrow>Our advantage is in the intersection</Eyebrow><h2 className="mt-4 text-4xl font-semibold tracking-tight">Deep Philippine retail understanding + serious enterprise technology depth.</h2></div>
-        <div className="mt-12 grid overflow-hidden rounded-[2rem] border border-slate-200 sm:grid-cols-2">
-          {cells.map((cell) => <div key={cell.label} className={`min-h-56 border-slate-200 p-7 sm:p-9 ${cell.active ? "bg-[#eaf0ff]" : "bg-white"} [&:nth-child(odd)]:sm:border-r [&:nth-child(-n+2)]:border-b`}><p className="text-xs font-semibold uppercase tracking-[.16em] text-slate-500">{cell.label}</p><p className={`mt-7 text-2xl font-semibold tracking-tight ${cell.active ? "text-[#203888]" : "text-slate-900"}`}>{cell.line1}<br />{cell.line2}</p>{cell.active ? <p className="mt-6 text-sm font-semibold text-[#203888]">The space we choose to own.</p> : null}</div>)}
+        <div className="mt-12" role="figure" aria-label="Comparison of enterprise technology depth and Philippine retail understanding. iRipple combines deep technology with deep local understanding.">
+          <div className="grid grid-cols-[2.5rem_minmax(0,1fr)] gap-2 sm:grid-cols-[4rem_minmax(0,1fr)] sm:gap-4">
+            <div className="grid grid-rows-2 text-[10px] font-semibold uppercase tracking-wider text-slate-500 sm:text-xs">
+              <div className="flex items-center justify-center"><span className="rotate-180 [writing-mode:vertical-rl]">Deep technology</span></div>
+              <div className="flex items-center justify-center"><span className="rotate-180 [writing-mode:vertical-rl]">Limited technology</span></div>
+            </div>
+            <div className="grid grid-cols-2 overflow-hidden rounded-2xl border border-slate-300 sm:rounded-[2rem]">
+              {cells.map((cell) => (
+                <div key={cell.label} className={`flex min-h-52 flex-col justify-center p-4 sm:min-h-64 sm:p-8 lg:p-10 ${cell.active ? "relative bg-[#203888] text-white" : "bg-slate-50 text-slate-400"} [&:nth-child(odd)]:border-r [&:nth-child(-n+2)]:border-b border-slate-300`}>
+                  {cell.active ? <><p className="text-3xl font-semibold tracking-tight sm:text-5xl">iRipple</p><p className="mt-4 text-base font-semibold leading-snug text-white sm:text-2xl">Enterprise technology.<br />Philippine retail expertise.</p><p className="mt-4 text-xs text-blue-200 sm:text-sm">Both. In one partner.</p></> : <><p className="text-xs font-medium sm:text-sm">{cell.label}</p><p className="mt-3 text-sm leading-relaxed sm:text-lg">{cell.line1}<br />{cell.line2}</p></>}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="ml-12 grid grid-cols-2 gap-4 pt-4 text-center text-[10px] font-semibold uppercase tracking-wider text-slate-500 sm:ml-20 sm:text-xs">
+            <p>Limited local understanding</p>
+            <p>Deep local understanding</p>
+          </div>
         </div>
       </Container>
     </section>
