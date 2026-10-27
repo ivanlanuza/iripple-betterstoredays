@@ -51,19 +51,19 @@ export default function ClientsPage({ clients }) {
   return (
     <Layout>
       <Seo
-        title="Our clients — Retail partnerships"
-        description="Meet a selection of the brands and businesses that work with iRipple. Retail technology partnerships across stores, formats, and markets."
-        schema={{ "@context": "https://schema.org", "@type": "CollectionPage", name: "Our clients", url: `${SITE_URL}/clients`, description: "A selection of brands and businesses that work with iRipple." }}
+        title="Retail stores using our solutions"
+        description="A selection of retail brands represented by stores using iRipple solutions, through store operators and retail groups."
+        schema={{ "@context": "https://schema.org", "@type": "CollectionPage", name: "Retail stores using our solutions", url: `${SITE_URL}/clients`, description: "A selection of retail brands represented by stores using iRipple solutions." }}
       />
 
       <section className="relative overflow-hidden bg-[#f8f6f1] py-16 sm:py-24">
         <div className="ripple-lines" aria-hidden="true" />
         <Container className="relative">
-          <Eyebrow>Our clients · Our strongest proof</Eyebrow>
-          <h1 className="mt-5 max-w-5xl text-5xl font-semibold tracking-[-.05em] sm:text-6xl lg:text-7xl">The brands you know.<br /><span className="text-[#203888]">The partner they trust.</span></h1>
+          <Eyebrow>iRipple in retail</Eyebrow>
+          <h1 className="mt-5 max-w-5xl text-5xl font-semibold tracking-[-.05em] sm:text-6xl lg:text-7xl">Retail stores using<br /><span className="text-[#203888]">our solutions.</span></h1>
           <div className="mt-8 grid gap-7 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
-            <p className="max-w-2xl text-lg leading-8 text-slate-600">Across stores, formats, and markets, we help retailers run their operations, understand their performance, and move through change—with people who stay alongside them.</p>
-            <a href="#client-wall" className="group inline-flex items-center gap-3 justify-self-start rounded-sm text-sm font-semibold text-[#203888] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#203888] lg:justify-self-end">Meet the companies we keep <ArrowDown className="h-4 w-4 transition-transform group-hover:translate-y-1" /></a>
+            <p className="max-w-2xl text-lg leading-8 text-slate-600">Our solutions support stores operating under a wide range of retail brands, through their store operators and retail groups.</p>
+            <a href="#client-wall" className="group inline-flex items-center gap-3 justify-self-start rounded-sm text-sm font-semibold text-[#203888] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#203888] lg:justify-self-end">Explore the retail brands <ArrowDown className="h-4 w-4 transition-transform group-hover:translate-y-1" /></a>
           </div>
         </Container>
       </section>
@@ -74,9 +74,10 @@ export default function ClientsPage({ clients }) {
         <Container>
           <div className="grid gap-8 border-b border-slate-200 pb-9 lg:grid-cols-[1fr_auto] lg:items-end">
             <div>
-              <Eyebrow>In good company</Eyebrow>
-              <h2 id="client-wall-heading" className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">The names behind the partnerships.</h2>
-              <p className="mt-4 max-w-xl leading-7 text-slate-600">A selection of the brands and businesses we work with. Every logo represents a relationship.</p>
+              <Eyebrow>Across retail formats</Eyebrow>
+              <h2 id="client-wall-heading" className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">Familiar brands. Everyday operations.</h2>
+              <p className="mt-4 max-w-xl leading-7 text-slate-600">A selection of retail brands represented by stores using our solutions.</p>
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-500">Relationships may be with store operators or retail groups rather than the brand owner. Logo display does not imply endorsement by the brand owner.</p>
             </div>
             <div className="w-full lg:w-64">
               <label htmlFor="client-search" className="sr-only">Find a brand or business</label>
@@ -89,7 +90,7 @@ export default function ClientsPage({ clients }) {
             </div>
           </div>
 
-          <ul id="client-logos" className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6" aria-label="Client logos">
+          <ul id="client-logos" className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6" aria-label="Retail brands represented by stores using iRipple solutions">
             {visibleClients.map((client) => <ClientMark key={client.slug} client={client} />)}
           </ul>
           {visibleClients.length === 0 ? <div className="py-20 text-center"><h3 className="text-xl font-semibold">No matching brand found.</h3><p className="mt-3 text-slate-500">Try another name or browse the full wall.</p><button type="button" onClick={() => setQuery("")} className="mt-6 rounded-full bg-[#203888] px-5 py-3 text-sm font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#203888]">Show all logos</button></div> : null}
@@ -99,8 +100,8 @@ export default function ClientsPage({ clients }) {
 
       <section className="bg-[#f8f6f1] py-16 sm:py-20">
         <Container className="grid gap-8 lg:grid-cols-2 lg:items-center">
-          <div><Eyebrow>Partnership beyond go-live</Eyebrow><h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">The relationship matters long after the rollout.</h2></div>
-          <div><p className="text-lg leading-8 text-slate-600">New stores. New systems. New regulations. We keep working with our clients as their businesses grow and their needs change.</p><Link href="/why-iripple" className="mt-6 inline-flex items-center gap-2 rounded-sm text-sm font-semibold text-[#203888] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#203888]">See what partnership means at iRipple <ArrowRight className="h-4 w-4" /></Link></div>
+          <div><Eyebrow>Support beyond go-live</Eyebrow><h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">Supporting retail teams as their needs change.</h2></div>
+          <div><p className="text-lg leading-8 text-slate-600">New stores. New systems. New regulations. We help retail teams operate, understand their business, and prepare for what comes next.</p><Link href="/why-iripple" className="mt-6 inline-flex items-center gap-2 rounded-sm text-sm font-semibold text-[#203888] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#203888]">Learn how iRipple supports retailers <ArrowRight className="h-4 w-4" /></Link></div>
         </Container>
       </section>
 

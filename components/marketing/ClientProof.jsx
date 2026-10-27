@@ -15,11 +15,11 @@ export function ClientLogoWall({ compact = false }) {
     <section className={`${compact ? "py-16" : "py-20 sm:py-24"} border-y border-slate-200 bg-white`}>
       <Container>
         <div className={compact ? "text-center" : "max-w-3xl"}>
-          <Eyebrow>Trusted by progressive retailers</Eyebrow>
+          <Eyebrow>iRipple in retail</Eyebrow>
           <h2 className={`${compact ? "mt-3 text-2xl" : "mt-4 text-3xl sm:text-4xl"} font-semibold tracking-tight text-slate-950`}>
-            Proven in the company we keep.
+            Retail stores using our solutions.
           </h2>
-          {!compact ? <p className="mt-4 text-lg leading-8 text-slate-600">Leading retailers across formats and markets have trusted iRipple with the technology behind their operations.</p> : null}
+          {!compact ? <p className="mt-4 text-lg leading-8 text-slate-600">A selection of retail brands represented by stores using iRipple solutions, through their store operators and retail groups.</p> : null}
         </div>
         <div className="mt-12 grid grid-cols-2 items-center gap-x-10 gap-y-14 lg:grid-cols-3">
           {CLIENT_LOGOS.map((client) => (
@@ -28,7 +28,7 @@ export function ClientLogoWall({ compact = false }) {
             </div>
           ))}
         </div>
-        <Link href="/clients" className="mt-12 inline-flex items-center gap-2 rounded-sm text-sm font-semibold text-[#203888] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#203888]">Explore our client wall <ArrowRight className="h-4 w-4" /></Link>
+        <Link href="/clients" className="mt-12 inline-flex items-center gap-2 rounded-sm text-sm font-semibold text-[#203888] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#203888]">See more stores using iRipple <ArrowRight className="h-4 w-4" /></Link>
       </Container>
     </section>
   );
