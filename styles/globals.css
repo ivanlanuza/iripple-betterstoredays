@@ -153,6 +153,12 @@ a { color: inherit; }
     animation: home-hero-rise .85s .16s cubic-bezier(.2,.75,.25,1) forwards;
   }
 
+  .home-hero__title > span:first-child {
+    white-space: nowrap;
+    font-size: clamp(4.35rem, 8vw, 6.9rem);
+    letter-spacing: -.08em;
+  }
+
   .home-hero__title .home-hero__title-accent {
     margin-top: .13em;
     color: #a9bfff;
@@ -386,7 +392,13 @@ a { color: inherit; }
   }
 
   .home-hero__title {
-    font-size: clamp(3.75rem, 19.5vw, 5.3rem);
+    font-size: clamp(3.25rem, 14vw, 4.5rem);
+  }
+
+  .home-hero__title > span:first-child {
+    white-space: nowrap;
+    font-size: clamp(2.35rem, 11.5vw, 3.65rem);
+    letter-spacing: -.085em;
   }
 
   .home-hero__lede {

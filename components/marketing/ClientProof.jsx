@@ -19,12 +19,13 @@ export function ClientLogoWall({ compact = false }) {
           <h2 className={`${compact ? "mt-3 text-2xl" : "mt-4 text-3xl sm:text-4xl"} font-semibold tracking-tight text-slate-950`}>
             Retail stores using our solutions.
           </h2>
-          {!compact ? <p className="mt-4 text-lg leading-8 text-slate-600">A selection of retail brands represented by stores using iRipple solutions, through their store operators and retail groups.</p> : null}
         </div>
-        <div className="mt-12 grid grid-cols-2 items-center gap-x-10 gap-y-14 lg:grid-cols-3">
+        <div className="mt-10 grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-6">
           {CLIENT_LOGOS.map((client) => (
-            <div key={client.name} className="flex h-28 items-center justify-center px-4" title={client.name}>
-              <Image src={client.src} alt={`${client.name} logo`} width={320} height={130} className="max-h-24 w-auto max-w-full object-contain" sizes="(min-width: 1024px) 300px, (min-width: 640px) 240px, 160px" />
+            <div key={client.name} className="flex h-20 items-center justify-center rounded-2xl border border-slate-100 bg-[#fbfbfa] px-3 transition-colors hover:border-blue-100 hover:bg-white sm:h-24 sm:px-4" title={client.name}>
+              <div className={`relative w-full ${client.compact ? "h-12 max-w-[4.5rem] sm:h-14 sm:max-w-[5.25rem]" : "h-10 max-w-[7.25rem] sm:h-12 sm:max-w-[8.25rem]"}`}>
+                <Image src={client.src} alt={`${client.name} logo`} fill className={`object-contain mix-blend-multiply ${client.compact ? "scale-[1.55]" : ""}`} sizes="(min-width: 1024px) 132px, (min-width: 640px) 22vw, 28vw" />
+              </div>
             </div>
           ))}
         </div>

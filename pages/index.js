@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowDownRight, ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import Button from "@/components/Button";
 import Container from "@/components/Container";
 import Layout from "@/components/Layout";
@@ -33,26 +33,26 @@ export default function HomePage() {
             <span className="home-hero__ring home-hero__ring--three" />
           </div>
           <div className="home-hero__product home-hero__product--barter">
-            <span>Barter</span>
-            <small>Operate</small>
+            <span>Technology</span>
+            <small>Enterprise-ready</small>
           </div>
           <div className="home-hero__product home-hero__product--retina">
-            <span>Retina</span>
-            <small>Understand</small>
+            <span>Partnership</span>
+            <small>Built to last</small>
           </div>
         </div>
 
         <Container className="home-hero__inner">
           <div className="home-hero__copy">
-            <p className="home-hero__eyebrow"><span /> Enterprise retail, connected</p>
+            <p className="home-hero__eyebrow"><span /> iRipple · Enterprise retail technology partner</p>
             <h1 className="home-hero__title">
-              <span>Run retail.</span>
-              <span className="home-hero__title-accent">See further.</span>
+              <span>Enterprise retail.</span>
+              <span className="home-hero__title-accent">Together.</span>
             </h1>
-            <p className="home-hero__lede">Barter runs the day. Retina reveals what’s next. iRipple makes them work as one.</p>
+            <p className="home-hero__lede">Technology built for scale, expertise grounded in retail, and a team that stays with you through every next step.</p>
             <div className="home-hero__actions">
               <Button href="/contact" variant="warm" className="home-hero__cta">Start a conversation <ArrowRight className="ml-2 h-4 w-4" /></Button>
-              <a href="#platforms" className="home-hero__explore">See how it works <ArrowDownRight className="h-4 w-4" /></a>
+              <Link href="/why-iripple" className="home-hero__explore">Why iRipple <ArrowRight className="h-4 w-4" /></Link>
             </div>
           </div>
         </Container>

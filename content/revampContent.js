@@ -29,6 +29,18 @@ export const CLIENT_LOGOS = [
   { src: "/images/client-logos-color/primer.png", name: "Primer Group" },
   { src: "/images/client-logos-color/jetti.png", name: "Jetti" },
   { src: "/images/client-logos-color/mydin.png", name: "Mydin" },
+  { src: "/partner-icons/penshoppe.png", name: "Penshoppe" },
+  { src: "/partner-icons/puma.png", name: "PUMA" },
+  { src: "/partner-icons/merrymart.png", name: "MerryMart" },
+  { src: "/partner-icons/cln.png", name: "CLN" },
+  { src: "/partner-icons/the-north-face.png", name: "The North Face", compact: true },
+  { src: "/partner-icons/tumi.png", name: "TUMI", compact: true },
+  { src: "/partner-icons/columbia.png", name: "Columbia", compact: true },
+  { src: "/partner-icons/ace.png", name: "ace.", compact: true },
+  { src: "/partner-icons/mango.png", name: "Mango" },
+  { src: "/partner-icons/birkenstock.png", name: "Birkenstock", compact: true },
+  { src: "/partner-icons/r-o-x.png", name: "R.O.X." },
+  { src: "/partner-icons/regatta.png", name: "Regatta" },
 ];
 
 export const EXPANSION_STORIES = [
