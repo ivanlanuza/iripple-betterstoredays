@@ -141,7 +141,8 @@ export default function HomePage() {
               <AnimatedRipple paused={paused} mode={mode} />
               <div className={`${styles.sceneTag} ${styles.sceneTagTechnology}`}><span className={styles.tagIcon}><Layers3 size={18} /></span><span><strong>Technology</strong><small>Enterprise-ready</small></span><span className={styles.tagSpark} /></div>
               <div className={`${styles.sceneTag} ${styles.sceneTagPartnership}`}><span className={styles.tagIcon}><HeartHandshake size={18} /></span><span><strong>Partnership</strong><small>Built to last</small></span><Check size={15} /></div>
-              <span className={styles.sceneCoordinate} aria-hidden="true">01 — CONNECTED RETAIL</span>
+              <span className={styles.sceneCoordinate} aria-hidden="true">{mode === "barter" ? "01 — POINT OF SALE" : "02 — RETAIL INTELLIGENCE"}</span>
+              <p className="sr-only" aria-live="polite">{mode === "barter" ? "Barter: an animated dotted checkout terminal with a cash drawer, card reader, and receipt printer." : "Retina: an animated dotted laptop displaying retail charts and business intelligence."}</p>
               <div className={styles.sceneControls} role="group" aria-label="Explore the animated retail platforms"><button type="button" aria-pressed={mode === "barter"} onClick={() => setMode("barter")}><span /> Barter <small>Operate</small></button><button type="button" aria-pressed={mode === "retina"} onClick={() => setMode("retina")}><span /> Retina <small>Understand</small></button></div>
             </div>
           </div>

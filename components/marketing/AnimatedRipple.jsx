@@ -1,11 +1,13 @@
 import { useEffect, useRef } from "react";
+import { createRetailParticleScenes } from "@/lib/retailParticleScenes";
 import styles from "@/styles/AnimatedHome.module.css";
 
-// A small, dependency-free point sculpture. Keep animation outside React's render loop.
+// Keep the point-cloud render loop outside React, and hold a readable camera angle.
 export default function AnimatedRipple({ paused, mode }) {
   const canvasRef = useRef(null);
   const modeRef = useRef(mode);
   const redrawRef = useRef(null);
+  const sceneStateRef = useRef({ phase: 0, blend: mode === "retina" ? 1 : 0 });
 
   useEffect(() => { modeRef.current = mode; redrawRef.current?.(); }, [mode]);
 
@@ -17,18 +19,14 @@ export default function AnimatedRipple({ paused, mode }) {
     const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
     const pointer = { x: 0, y: 0 };
     const position = { x: 0, y: 0 };
-    const points = Array.from({ length: 1152 }, (_, index) => {
-      const ring = Math.floor(index / 24);
-      const angle = (ring / 48) * Math.PI * 2;
-      const tube = ((index % 24) / 24) * Math.PI * 2;
-      return { angle, tube, seed: Math.sin(index * 127.1) * 0.5 + 0.5 };
-    });
+    const scenes = createRetailParticleScenes();
+    const points = scenes.barter.map((from, index) => ({ from, to: scenes.retina[index], seed: Math.sin(index * 127.1) * 0.5 + 0.5 }));
     let width = 1;
     let height = 1;
     let frame = 0;
-    let phase = 0;
+    let phase = sceneStateRef.current.phase;
     let lastTime = 0;
-    let blend = modeRef.current === "retina" ? 1 : 0;
+    let blend = sceneStateRef.current.blend;
     let onScreen = true;
     let disposed = false;
 
@@ -42,33 +40,38 @@ export default function AnimatedRipple({ paused, mode }) {
       position.x += (pointer.x - position.x) * 0.04;
       position.y += (pointer.y - position.y) * 0.04;
       context.clearRect(0, 0, width, height);
-      const scale = Math.min(width, height) * 0.315;
-      const turn = phase + position.x * 0.25;
-      const tilt = 0.55 + Math.sin(phase * 0.7) * 0.18 + position.y * 0.2;
-      const dots = points.map(({ angle, tube, seed }) => {
-        const a = angle + phase * 0.3;
-        const radius = 0.88 + Math.cos(tube) * 0.32;
-        const wave = Math.sin(a * 3 + phase * 2) * 0.045;
-        let x = (radius + wave) * Math.cos(a);
-        let y = (radius + wave) * Math.sin(a);
-        let z = Math.sin(tube) * 0.32;
-        // The second state opens the central ring into a spherical data cloud.
-        const sphereY = Math.cos(tube) * 1.05;
-        const sphereRadius = Math.sin(tube) * 1.05;
-        x += (sphereRadius * Math.cos(a) - x) * blend;
-        y += (sphereY - y) * blend;
-        z += (sphereRadius * Math.sin(a) - z) * blend;
-        const rotatedX = x * Math.cos(turn) - z * Math.sin(turn);
-        const rotatedZ = x * Math.sin(turn) + z * Math.cos(turn);
+      const scale = Math.min(width, height) * 0.325;
+      const dotScale = Math.max(0.65, Math.min(1, Math.min(width, height) / 510));
+      const turn = -0.23 + Math.sin(phase * 0.8) * 0.075 + position.x * 0.18;
+      const tilt = 0.24 + blend * 0.16 + Math.sin(phase * 0.6) * 0.025 + position.y * 0.1;
+      const scatter = Math.sin(blend * Math.PI);
+      const dots = points.map(({ from, to, seed }) => {
+        let x = from.x + (to.x - from.x) * blend;
+        let y = from.y + (to.y - from.y) * blend;
+        let z = from.z + (to.z - from.z) * blend;
+        x += Math.sin(seed * 17 + phase) * scatter * 0.15;
+        y += Math.cos(seed * 13 + phase) * scatter * 0.12 + Math.sin(phase) * 0.025;
+        z += Math.sin(seed * 23 + phase) * scatter * 0.2;
+        if (to.activity === 2 && !still) y += Math.sin(phase * 2 + to.x * 3) * 0.018 * blend;
+        const rotatedX = x * Math.cos(turn) + z * Math.sin(turn);
+        const rotatedZ = -x * Math.sin(turn) + z * Math.cos(turn);
         const rotatedY = y * Math.cos(tilt) - rotatedZ * Math.sin(tilt);
         const depth = y * Math.sin(tilt) + rotatedZ * Math.cos(tilt);
-        const perspective = 3.8 / (3.8 - depth);
-        return { x: width / 2 + rotatedX * scale * perspective, y: height / 2 + rotatedY * scale * perspective, depth, radius: (1.45 + seed * 1.1) * perspective, red: Math.sin(angle + phase * 0.4) > 0.8 - blend * 0.7 };
+        const perspective = 5.5 / (5.5 - depth);
+        const activity = from.activity + (to.activity - from.activity) * blend;
+        const shimmer = activity ? 0.9 + Math.sin(phase * 3 + seed * 6) * 0.1 : 1;
+        return {
+          x: width * 0.52 + rotatedX * scale * perspective,
+          y: height * 0.51 - rotatedY * scale * perspective,
+          depth,
+          radius: (1.5 + seed * 0.45) * (from.size + (to.size - from.size) * blend) * perspective * dotScale,
+          red: from.red + (to.red - from.red) * blend,
+          opacity: (from.opacity + (to.opacity - from.opacity) * blend) * shimmer,
+        };
       }).sort((a, b) => a.depth - b.depth);
 
       for (const dot of dots) {
-        const opacity = 0.28 + ((dot.depth + 1.5) / 3) * 0.7;
-        context.fillStyle = dot.red ? `rgba(136,32,56,${opacity})` : `rgba(32,56,136,${opacity})`;
+        context.fillStyle = `rgba(${Math.round(32 + dot.red * 104)},${Math.round(56 - dot.red * 24)},${Math.round(136 - dot.red * 80)},${dot.opacity})`;
         context.beginPath();
         context.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2);
         context.fill();
@@ -118,6 +121,7 @@ export default function AnimatedRipple({ paused, mode }) {
 
     return () => {
       disposed = true;
+      sceneStateRef.current = { phase, blend };
       redrawRef.current = null;
       cancelAnimationFrame(frame);
       resizeObserver.disconnect();
