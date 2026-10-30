@@ -4,10 +4,11 @@ import { advanceParticleSceneCycle, createParticleSceneCycle } from "@/lib/parti
 import styles from "@/styles/AnimatedHome.module.css";
 
 // Keep the point-cloud render loop outside React, and hold a readable camera angle.
-export default function AnimatedRipple({ paused, mode, autoCycle = false, onModeChange }) {
+export default function AnimatedRipple({ paused, mode, autoCycle = false, cycleHoldMs = 3000, onModeChange }) {
   const canvasRef = useRef(null);
   const modeRef = useRef(mode);
   const autoCycleRef = useRef(autoCycle);
+  const cycleHoldMsRef = useRef(cycleHoldMs);
   const onModeChangeRef = useRef(onModeChange);
   const redrawRef = useRef(null);
   const sceneStateRef = useRef({ phase: 0, blend: mode === "retina" ? 1 : 0 });
@@ -15,9 +16,10 @@ export default function AnimatedRipple({ paused, mode, autoCycle = false, onMode
   useEffect(() => {
     modeRef.current = mode;
     autoCycleRef.current = autoCycle;
+    cycleHoldMsRef.current = cycleHoldMs;
     onModeChangeRef.current = onModeChange;
     redrawRef.current?.();
-  }, [mode, autoCycle, onModeChange]);
+  }, [mode, autoCycle, cycleHoldMs, onModeChange]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -47,7 +49,9 @@ export default function AnimatedRipple({ paused, mode, autoCycle = false, onMode
       lastTime = time;
       if (!still) phase += delta * 0.00012;
       if (autoCycleRef.current && !still) {
-        cycle ??= createParticleSceneCycle(modeRef.current, blend);
+        if (!cycle || cycle.mode !== modeRef.current || cycle.holdMs !== cycleHoldMsRef.current) {
+          cycle = createParticleSceneCycle(modeRef.current, blend, cycleHoldMsRef.current);
+        }
         advanceParticleSceneCycle(cycle, elapsed);
         blend = cycle.blend;
         if (cycle.mode !== modeRef.current) {
