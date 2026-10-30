@@ -28,6 +28,7 @@
 .titlePeriod { display: inline-block; color: var(--blue); }
 .heroLede { max-width: 420px; margin-top: 27px; font-size: 16px; line-height: 1.8; color: #626b7c; animation: fade-up .9s .35s both; }
 .heroActions { display: flex; flex-wrap: wrap; align-items: center; gap: 30px; margin-top: 27px; animation: fade-up .9s .45s both; }
+.heroActionsMobile { display: none; }
 .action { display: inline-flex; align-items: center; justify-content: space-between; gap: 24px; padding: 8px 8px 8px 21px; min-height: 51px; border: 1px solid var(--blue); border-radius: 99px; background: var(--blue); color: white !important; font-size: 12px; font-weight: 500; transition: background .25s, transform .25s, box-shadow .25s; }
 .actionArrow { display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; flex-shrink: 0; border-radius: 50%; background: rgb(255 255 255 / 15%); transition: transform .25s, background .25s; }
 .action:hover { transform: translateY(-3px); box-shadow: 0 7px 24px rgb(32 56 136 / 15%); }
@@ -58,6 +59,7 @@
 .sceneTagPartnership > svg { color: var(--red); margin-left: 10px; }
 .tagSpark { width: 5px; height: 5px; border-radius: 50%; margin-left: 10px; background: var(--blue); animation: pulse 2.5s infinite; }
 .sceneCoordinate { position: absolute; top: 7%; left: 8%; font-size: 8px; letter-spacing: .18em; color: #9198a6; }
+.sceneCoordinateMobile { display: none; }
 .sceneControls { position: absolute; bottom: 0; left: 50%; display: flex; gap: 5px; padding: 5px; transform: translateX(-50%); border: 1px solid #e7e6e1; background: rgb(255 255 255 / 85%); border-radius: 99px; box-shadow: 0 8px 20px #20388805; white-space: nowrap; }
 .sceneControls button { display: flex; align-items: center; gap: 7px; border-radius: 99px; padding: 9px 13px; color: #7c8494; font-size: 11px; transition: background .3s, color .3s; }
 .sceneControls button[aria-pressed="true"] { background: #e9edf8; color: var(--blue); }
@@ -231,14 +233,18 @@
   .heroTitle { letter-spacing: -.065em; }
   .heroLede { max-width: 440px; margin-top: 22px; font-size: 14px; }
   .heroActions { margin-top: 22px; gap: 24px; }
+  .heroActionsDesktop { display: none; }
+  .heroActionsMobile { display: flex; }
   .action { font-size: 11px; min-height: 49px; gap: 15px; padding-left: 17px; }
   .textLink { font-size: 11px; gap: 9px; }
   .scene { width: 100%; max-width: 470px; margin: 27px auto 0; aspect-ratio: 1.14; }
   .sceneTagTechnology { right: 0; top: 10%; }
   .sceneTagPartnership { left: 0; bottom: 17%; }
-  .sceneControls { bottom: -2px; }
+  .sceneControls { display: none; }
   .sceneCoordinate { top: 5%; left: 3%; font-size: 7px; }
-  .heroBottom { padding-block: 17px; font-size: 9px; }
+  .sceneCoordinateDesktop { display: none; }
+  .sceneCoordinateMobile { display: inline; }
+  .heroBottom { display: none; }
   .heroBottomRight { display: none; }
   .proofGrid { grid-template-columns: repeat(2,1fr); row-gap: 25px; padding-block: 28px; }
   .proofItem { padding-inline: 20px; }

@@ -1,15 +1,23 @@
 import { useEffect, useRef } from "react";
 import { createRetailParticleScenes } from "@/lib/retailParticleScenes";
+import { advanceParticleSceneCycle, createParticleSceneCycle } from "@/lib/particleSceneCycle";
 import styles from "@/styles/AnimatedHome.module.css";
 
 // Keep the point-cloud render loop outside React, and hold a readable camera angle.
-export default function AnimatedRipple({ paused, mode }) {
+export default function AnimatedRipple({ paused, mode, autoCycle = false, onModeChange }) {
   const canvasRef = useRef(null);
   const modeRef = useRef(mode);
+  const autoCycleRef = useRef(autoCycle);
+  const onModeChangeRef = useRef(onModeChange);
   const redrawRef = useRef(null);
   const sceneStateRef = useRef({ phase: 0, blend: mode === "retina" ? 1 : 0 });
 
-  useEffect(() => { modeRef.current = mode; redrawRef.current?.(); }, [mode]);
+  useEffect(() => {
+    modeRef.current = mode;
+    autoCycleRef.current = autoCycle;
+    onModeChangeRef.current = onModeChange;
+    redrawRef.current?.();
+  }, [mode, autoCycle, onModeChange]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -27,16 +35,29 @@ export default function AnimatedRipple({ paused, mode }) {
     let phase = sceneStateRef.current.phase;
     let lastTime = 0;
     let blend = sceneStateRef.current.blend;
+    let cycle = null;
     let onScreen = true;
     let disposed = false;
 
     function draw(time = 0) {
       frame = 0;
       const still = paused || motionPreference.matches;
-      const delta = lastTime ? Math.min(time - lastTime, 40) : 16;
+      const elapsed = lastTime ? time - lastTime : 0;
+      const delta = lastTime ? Math.min(elapsed, 40) : 16;
       lastTime = time;
       if (!still) phase += delta * 0.00012;
-      blend += ((modeRef.current === "retina" ? 1 : 0) - blend) * (still ? 1 : 0.035);
+      if (autoCycleRef.current && !still) {
+        cycle ??= createParticleSceneCycle(modeRef.current, blend);
+        advanceParticleSceneCycle(cycle, elapsed);
+        blend = cycle.blend;
+        if (cycle.mode !== modeRef.current) {
+          modeRef.current = cycle.mode;
+          onModeChangeRef.current?.(cycle.mode);
+        }
+      } else {
+        cycle = null;
+        blend += ((modeRef.current === "retina" ? 1 : 0) - blend) * (still ? 1 : 0.035);
+      }
       position.x += (pointer.x - position.x) * 0.04;
       position.y += (pointer.y - position.y) * 0.04;
       context.clearRect(0, 0, width, height);

@@ -16,6 +16,10 @@ function Action({ href, children, secondary = false, light = false }) {
   return <Link href={href} className={`${styles.action} ${secondary ? styles.actionSecondary : ""} ${light ? styles.actionLight : ""}`}><span>{children}</span><span className={styles.actionArrow}><ArrowUpRight size={19} aria-hidden="true" /></span></Link>;
 }
 
+function HeroActions({ mobile = false }) {
+  return <div className={`${styles.heroActions} ${mobile ? styles.heroActionsMobile : styles.heroActionsDesktop}`}><Action href="/contact">Start a conversation</Action><Link href="/why-iripple" className={styles.textLink}>Why iRipple <ArrowRight size={17} /></Link></div>;
+}
+
 function ProofNumber({ value, paused }) {
   const ref = useRef(null);
   const [display, setDisplay] = useState(value);
@@ -86,6 +90,15 @@ export default function HomePage() {
   const [paused, setPaused] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [mode, setMode] = useState("barter");
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const viewport = window.matchMedia("(max-width: 767px)");
+    const sync = () => setIsMobile(viewport.matches);
+    sync();
+    viewport.addEventListener("change", sync);
+    return () => viewport.removeEventListener("change", sync);
+  }, []);
 
   useEffect(() => {
     const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -133,18 +146,19 @@ export default function HomePage() {
             <div className={styles.heroCopy}>
               <h1 className={styles.heroTitle}><span className={styles.titleLine}><span>Enterprise Retail.</span></span><span className={styles.titleAccent}><span>Together<span className={styles.titlePeriod}>.</span></span></span></h1>
               <p className={styles.heroLede}>Technology built for scale, expertise grounded in retail, and a team that stays with you through every next step.</p>
-              <div className={styles.heroActions}><Action href="/contact">Start a conversation</Action><Link href="/why-iripple" className={styles.textLink}>Why iRipple <ArrowRight size={17} /></Link></div>
+              <HeroActions />
             </div>
             <div className={styles.scene}>
               <div className={styles.sceneGrid} aria-hidden="true" />
               <div className={styles.sceneOrbit} aria-hidden="true" /><div className={styles.sceneOrbitInner} aria-hidden="true" />
-              <AnimatedRipple paused={paused} mode={mode} />
+              <AnimatedRipple paused={paused} mode={mode} autoCycle={isMobile} onModeChange={setMode} />
               <div className={`${styles.sceneTag} ${styles.sceneTagTechnology}`}><span className={styles.tagIcon}><Layers3 size={18} /></span><span><strong>Technology</strong><small>Enterprise-ready</small></span><span className={styles.tagSpark} /></div>
               <div className={`${styles.sceneTag} ${styles.sceneTagPartnership}`}><span className={styles.tagIcon}><HeartHandshake size={18} /></span><span><strong>Partnership</strong><small>Built to last</small></span><Check size={15} /></div>
-              <span className={styles.sceneCoordinate} aria-hidden="true">{mode === "barter" ? "01 — POINT OF SALE" : "02 — RETAIL INTELLIGENCE"}</span>
-              <p className="sr-only" aria-live="polite">{mode === "barter" ? "Barter: an animated dotted checkout terminal with a cash drawer, card reader, and receipt printer." : "Retina: an animated dotted laptop displaying retail charts and business intelligence."}</p>
+              <span className={styles.sceneCoordinate} aria-hidden="true"><span className={styles.sceneCoordinateDesktop}>{mode === "barter" ? "01 — POINT OF SALE" : "02 — RETAIL INTELLIGENCE"}</span><span className={styles.sceneCoordinateMobile}>{mode === "barter" ? "Barter - Operate" : "Retina - Understand"}</span></span>
+              <p className="sr-only" aria-live={isMobile ? "off" : "polite"}>{mode === "barter" ? "Barter: an animated dotted checkout terminal with a cash drawer, card reader, and receipt printer." : "Retina: an animated dotted laptop displaying retail charts and business intelligence."}</p>
               <div className={styles.sceneControls} role="group" aria-label="Explore the animated retail platforms"><button type="button" aria-pressed={mode === "barter"} onClick={() => setMode("barter")}><span /> Barter <small>Operate</small></button><button type="button" aria-pressed={mode === "retina"} onClick={() => setMode("retina")}><span /> Retina <small>Understand</small></button></div>
             </div>
+            <HeroActions mobile />
           </div>
           <div className={styles.heroBottom}><span>Technology. Expertise. Partnership.</span><a href="#retail-in-motion" className={styles.scrollLink}>Keep moving <span><ArrowDown size={15} /></span></a><span className={styles.heroBottomRight}>Your next chapter, together.</span></div>
         </div>
